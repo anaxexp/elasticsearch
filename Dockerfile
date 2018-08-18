@@ -1,4 +1,4 @@
-FROM anaxexp/openjdk:8
+FROM anaxexp/openjdk:8-0.2.0
 
 ARG ES_VER
 
