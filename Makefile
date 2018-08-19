@@ -22,7 +22,7 @@ build:
 	docker build -t $(REPO):$(TAG) --build-arg ES_VER=$(ES_VER) ./
 
 test:
-	IMAGE=$(REPO):$(TAG) NAME=$(NAME) ./test.sh
+	cd ./tests && IMAGE=$(REPO):$(TAG) NAME=$(NAME) ./run.sh
 
 push:
 	docker push $(REPO):$(TAG)

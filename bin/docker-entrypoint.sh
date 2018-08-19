@@ -10,6 +10,12 @@ if [[ "${ES_BOOTSTRAP_MEMORY_LOCK:-true}" == "true" ]]; then
     ulimit -l unlimited
 fi
 
+_gotpl() {
+    if [[ -f "/etc/gotpl/$1" ]]; then
+        gotpl "/etc/gotpl/$1" > "$2"
+    fi
+}
+
 _install_plugins() {
     if [[ -n "${ES_PLUGINS_INSTALL}" ]]; then
        orig_ifs=$IFS
@@ -33,7 +39,7 @@ _process_templates() {
         fi
     fi
 
-    gotpl /etc/gotpl/elasticsearch.yml.tpl > /usr/share/elasticsearch/config/elasticsearch.yml
+    _gotpl /etc/gotpl/elasticsearch.yml.tmpl > /usr/share/elasticsearch/config/elasticsearch.yml
 }
 
 # The virtual file /proc/self/cgroup should list the current cgroup

@@ -26,7 +26,7 @@ RUN set -ex; \
     es_url="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VER}.tar.gz"; \
     curl -o es.tar.gz -Lskj "${es_url}"; \
     curl -o es.tar.gz.asc -Lskj "${es_url}.asc"; \
-    GPG_KEYS=46095ACC8548582C1A2699A9D27D666CD88E42B4 gpg-verify.sh /tmp/es.tar.gz.asc /tmp/es.tar.gz; \
+    GPG_KEYS=46095ACC8548582C1A2699A9D27D666CD88E42B4 gpg_verify /tmp/es.tar.gz.asc /tmp/es.tar.gz; \
     \
     mkdir -p /usr/share/elasticsearch/data /usr/share/elasticsearch/logs; \
     tar zxf es.tar.gz --strip-components=1 -C /usr/share/elasticsearch; \
